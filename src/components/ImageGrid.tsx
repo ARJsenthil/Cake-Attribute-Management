@@ -3,7 +3,7 @@ import React, { useMemo, useState } from "react";
 
 interface ImageGridProps {
     selectedShapes: string[];
-    childCategories?: { name: string; values: string[] }[];
+    childCategories?: { name: string; childValues: string[] }[];
     images: Record<string, string>;
     setImages: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 }
@@ -71,7 +71,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-3">
-                {console.log(combinations)}{ combinations.length?combinations.map(({ shape, childCombo }, index) => {
+                { combinations.length?combinations.map(({ shape, childCombo }, index) => {
                     const key = getKey(shape, childCombo);
                     const label = childCombo.length
                         ? `${shape} x ${childCombo.join(" x ")}`

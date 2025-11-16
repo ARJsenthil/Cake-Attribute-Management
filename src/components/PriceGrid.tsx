@@ -3,21 +3,21 @@ import React, { useMemo } from "react";
 interface PriceSectionProps {
   selectedShapes: string[];
   selectedSizes: string[];
-  childCategories?: { name: string; values: string[] }[];
-  prices: Record<string, number>;
-  setPrices: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+  childCategories?: { name: string; childValues: string[] }[];
+  prices: Record<string, number>[];
+  setPrices: React.Dispatch<React.SetStateAction<Record<string, number>[]>>;
+  main_key: number;
 }
 
 const PriceSection: React.FC<PriceSectionProps> = ({
   selectedShapes,
   selectedSizes,
   childCategories = [],
-  prices = 0,
+  prices = [],
   setPrices,
   main_key
 }) => {
 
-  // Generate all combinations
   const combinations = useMemo(() => {
   const base: any[] = [];
 
@@ -56,7 +56,6 @@ const PriceSection: React.FC<PriceSectionProps> = ({
 
 
 
-  // Build unique key per combination
   const getKey = (shape: string, size: string, combo: string[]) => {
     return `${shape}__${size}__${combo.join("__")}`;
   };

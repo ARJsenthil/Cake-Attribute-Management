@@ -5,12 +5,12 @@ interface AppProvidersProps {
 }
 interface ChildType {
   shapes: {
-    rectangle: boolean,
-    round: boolean,
-    square: boolean,
-    heart: boolean,
-    star: boolean,
-    oval: boolean,
+    Rectangle: boolean,
+    Round: boolean,
+    Square: boolean,
+    Heart: boolean,
+    Star: boolean,
+    Oval: boolean,
   };
   size: {
     "0.5Kg": boolean,
