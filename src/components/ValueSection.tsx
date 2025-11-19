@@ -54,7 +54,7 @@ const ValuesSection = () => {
           key={val.id}
           className="mt-4 bg-white border border-gray-100 rounded-lg shadow-sm"
         >
-          <div className="flex justify-between items-center p-4 bg-gray-100 rounded-t-lg">
+          <div className="grid grid-cols-1 gap-5 sm:gap-0 sm:flex sm:justify-between items-center p-4 bg-gray-100 rounded-t-lg">
             <div className="text-sm flex gap-2">
 
               <h3 className="font-semibold">{val.name || "New Value"}</h3>
@@ -86,7 +86,7 @@ const ValuesSection = () => {
             </div>
           </div>
 
-          <div className="mt-3 p-4 grid grid-cols-3 gap-4 text-left text-sm">
+          <div className="mt-3 p-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-left text-sm">
             <div>
               <label className="block mb-2">Value Name</label>
 
@@ -141,7 +141,7 @@ const ValuesSection = () => {
 
           {val.type === "Selection Input" && (
             <div className="p-4 border mx-5 mb-5 rounded- bg-gray-100 border border-gray-100 rounded-lg shadow-sm">
-              <div className="flex justify-between items-center mb-3">
+              <div className="grid grid-cols-1 sm:flex justify-between items-center mb-3">
                 <h4 className="font-medium text-gray-700">Child Values</h4>
                 <button
                   onClick={() => addCategory(val.id)}
@@ -162,11 +162,11 @@ const ValuesSection = () => {
                       onChange={(e) =>
                         updateCategoryName(val.id, cat.id, e.target.value)
                       }
-                      className="border border-gray-300 rounded-lg px-3 py-2 w-1/3 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                      className="border border-gray-300 rounded-lg px-3 py-2 w-4/5 sm:w-1/3 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
                     />
                     <button
                       onClick={() => deleteCategory(val.id, cat.id)}
-                      className="text-red-500 hover:text-red-700 ml-2 outline-none"
+                      className="text-red-500 hover:text-red-700 ml-2 outline-none w-1/5 sm:w-auto"
                     >
                       <Trash2 size={16} />
                     </button>
@@ -195,7 +195,7 @@ const ValuesSection = () => {
                       type="text"
                       placeholder="Add child value..."
                       id={`child-${val.id}-${cat.id}`}
-                      className="border border-gray-300 rounded-lg px-3 py-2 w-auto focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                      className="border border-gray-300 rounded-lg px-3 py-2 w-4/5 sm:w-auto focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
                     />
                     <button
                       onClick={() => {
@@ -207,16 +207,16 @@ const ValuesSection = () => {
                           input.value = "";
                         }
                       }}
-                      className="bg-indigo-600 hover:bg-indigo-700 p-1 my-3 text-white rounded-lg outline-none"
+                      className="bg-indigo-600 w-1/5 sm:w-auto hover:bg-indigo-700 p-1 sm:my-3 text-white rounded-lg outline-none"
                     >
-                      <Plus size={12} />
+                      <Plus size={12} className="m-auto"/>
                     </button>
                   </div>
                 </div>
               ))}
             </div>
           )}
-          <div className="p-4 grid grid-cols-3 gap-3 md:grid-cols-3 lg:grid-cols-3 border mx-5 mb-5 rounded- bg-gray-100 border border-gray-100 rounded-lg shadow-sm">
+          <div className="p-4 grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-3 border mx-5 mb-5 rounded- bg-gray-100 border border-gray-100 rounded-lg shadow-sm">
             <div className="col-span-2">
               <PriceSection
                 selectedShapes={Object.keys(primaryAttribute.shapes).filter(
