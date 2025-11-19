@@ -90,24 +90,24 @@ ${v.categories?
     console.log("Prices:", prices)
   }
   return (
-    <div className="px-5 py-5 flex justify-start text-sm gap-4 shadow-sm border-1 border-gray-200 rounded-xl">
+    <div className="px-5 py-5 sm:flex sm:justify-start grid grid-cols-1 text-sm gap-4 shadow-sm border-1 border-gray-200 rounded-xl">
 
       <button
         onClick={GenerateRandomdata}
-        className="flex items-center gap-1 px-4 py-2 bg-green-700 text-white rounded-lg font-medium transition cursor-pointer outline-non outline-none"
+        className="flex items-center gap-1 text-nowrap px-4 py-2 bg-green-700 text-white w-fit rounded-lg font-medium transition cursor-pointer outline-non outline-none"
       >
         <Box size={18} /> Generate Random Data
       </button>
 
       <button
         onClick={Preview}
-        className="flex items-center gap-1 px-4 py-2 bg-blue-700 hover:bg-blue-600 text-black rounded-lg font-medium transition cursor-pointer outline-none"
+        className="flex items-center gap-1 text-nowrap px-4 py-2 bg-blue-700 hover:bg-blue-600 w-fit text-black rounded-lg font-medium transition cursor-pointer outline-none"
       >
         <Eye size={18} /> Preview
       </button>
       <button
         onClick={SaveAttribute}
-        className="px-4 py-2 flex items-center gap-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-medium shadow-md transition cursor-pointer outline-none"
+        className="px-4 py-2 flex items-center gap-1 bg-gradient-to-r from-blue-500 w-fit to-purple-500 text-white rounded-lg font-medium shadow-md transition cursor-pointer outline-none"
       >
         <Save size={18} /> Save Attribute
       </button>

@@ -54,7 +54,7 @@ export const PrimaryAttributes = () => {
         {/* SHAPES */}
         <div>
           <label className="block mb-2">Shapes</label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {SHAPES.map((shape) =>
               renderBox("shapes", shape, primaryAttribute.shapes[shape] || false)
             )}
@@ -64,7 +64,7 @@ export const PrimaryAttributes = () => {
         {/* SIZES */}
         <div>
           <label className="block mb-2">Size</label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
             {SIZES.map((size) =>
               renderBox("size", size, primaryAttribute.size[size] || false)
             )}
