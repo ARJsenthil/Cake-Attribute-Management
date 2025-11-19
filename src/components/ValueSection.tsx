@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Trash2, Plus, X } from "lucide-react";
 import { useValues } from "../context/ValueSection";
 import PriceSection from "./PriceGrid";
@@ -7,21 +7,6 @@ import { usePrice } from "../context/PriceGrid";
 import ImageGrid from "./ImageGrid";
 
 type ValueType = "Selection Input" | "Text Upload" | "Image Upload";
-
-interface ChildCategory {
-  id: number;
-  name: string;
-  childValues: string[];
-}
-
-interface ValueItem {
-  id: number;
-  name: string;
-  type: "Selection Input" | "Text Upload" | "Image Upload";
-  status: "active" | "inactive";
-  description?: string;
-  categories?: ChildCategory[];
-}
 
 const ValuesSection = () => {
   const {

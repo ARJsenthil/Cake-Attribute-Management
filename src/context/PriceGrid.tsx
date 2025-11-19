@@ -3,25 +3,18 @@ import React, { createContext, useContext, useState, type ReactNode } from "reac
 interface AppProvidersProps {
   children: ReactNode;
 }
-// Price section data types
 interface PriceContextType {
-  shape: string;
-  kg: number;
-  prices: number;
-
-  setShape: (value: string) => void;
-  setKg: (value: number) => void;
-  setPrices: (value: number) => void;
-
-  resetPriceData: () => void;
+  prices: Record<number, Record<string, number>>;
+  setPrices: React.Dispatch<
+    React.SetStateAction<Record<number, Record<string, number>>>
+  >;
 }
 
-// Create context
+
 const PriceContext = createContext<PriceContextType | undefined>(undefined);
 
-// Provider
 export const PriceProvider = ({ children }: AppProvidersProps) => {
-  const [prices, setPrices] = useState(0);
+  const [prices, setPrices] = useState<Record<number, Record<string, number>>>({});
 
   return (
     <PriceContext.Provider
@@ -35,7 +28,6 @@ export const PriceProvider = ({ children }: AppProvidersProps) => {
   );
 };
 
-// Custom Hook
 export const usePrice = () => {
   const ctx = useContext(PriceContext);
   if (!ctx) throw new Error("usePrice must be used inside PriceProvider");

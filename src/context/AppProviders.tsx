@@ -1,4 +1,4 @@
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { BasicInfoProvider } from "./BasicInfo";
 import { PrimaryAttributeProvider } from "./PrimaryAttributes";
 import { ValuesProvider } from "./ValueSection";

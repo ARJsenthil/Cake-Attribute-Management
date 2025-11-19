@@ -3,31 +3,14 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 interface AppProvidersProps {
   children: ReactNode;
 }
-interface ChildType {
-  shapes: {
-    Rectangle: boolean,
-    Round: boolean,
-    Square: boolean,
-    Heart: boolean,
-    Star: boolean,
-    Oval: boolean,
-  };
-  size: {
-    "0.5Kg": boolean,
-    "1Kg": boolean,
-    "1.5Kg": boolean,
-    "2Kg": boolean,
-    "2.5Kg": boolean,
-    "3Kg": boolean,
-    "4Kg": boolean,
-    "5Kg": boolean,
-  };
-}
 
+interface ChildType {
+  shapes: Record<string, boolean>;
+  size: Record<string, boolean>;
+}
 
 interface AppContextType {
   primaryAttribute: ChildType;
-  handleInputChange: (attributeName: keyof ChildType, name: string, value: string | number | boolean) => void;
   setPrimaryAttribute: React.Dispatch<React.SetStateAction<ChildType>>;
 }
 
@@ -56,9 +39,7 @@ const PrimaryAttributeProvider = ({ children }: AppProvidersProps) => {
   });
 
   return (
-    <PrimaryAttributeContext.Provider
-      value={{ primaryAttribute, setPrimaryAttribute }}
-    >
+    <PrimaryAttributeContext.Provider value={{ primaryAttribute, setPrimaryAttribute }}>
       {children}
     </PrimaryAttributeContext.Provider>
   );
@@ -66,9 +47,8 @@ const PrimaryAttributeProvider = ({ children }: AppProvidersProps) => {
 
 const usePrimaryAttribute = () => {
   const context = useContext(PrimaryAttributeContext);
-  if (!context) throw new Error("useprimaryAttribute must be used within a PrimaryAttributeProvider");
+  if (!context) throw new Error("usePrimaryAttribute must be used within a PrimaryAttributeProvider");
   return context;
 };
 
 export { usePrimaryAttribute, PrimaryAttributeProvider };
-

@@ -1,12 +1,11 @@
-import { Box, CurlyBraces, Eye, Save } from "lucide-react";
-import React from "react";
+import { Box, Eye, Save } from "lucide-react";
 import { usePrice } from "../context/PriceGrid";
 import { useBasicInfo } from "../context/BasicInfo";
 import { usePrimaryAttribute } from "../context/PrimaryAttributes";
 import { useValues } from "../context/ValueSection";
 
 const FooterActions = () => {
-  const { prices, setPrices } = usePrice();
+  const { prices } = usePrice();
   const { basicInfo, setBasicInfo } = useBasicInfo();
   const { primaryAttribute, setPrimaryAttribute } = usePrimaryAttribute();
   const { values, setValues } = useValues();
@@ -48,8 +47,8 @@ const FooterActions = () => {
     }]);
   }
   const Preview = () => {
-    let selectedShapes = Object.entries(primaryAttribute.shapes).filter(([key, value]) => value).map(([key]) => key);
-    let selectedSizes = Object.entries(primaryAttribute.size).filter(([key, value]) => value).map(([key]) => key);
+    let selectedShapes = Object.entries(primaryAttribute.shapes).filter(([value]) => value).map(([key]) => key);
+    let selectedSizes = Object.entries(primaryAttribute.size).filter(([value]) => value).map(([key]) => key);
     console.log(selectedShapes);
     alert(`
 ------ BASIC INFO ------
@@ -73,11 +72,11 @@ Type: ${v.type}
 Status: ${v.status}
 Description: ${v.description}
 Categories:
-${v?.categories
-              .map(
+${v.categories?
+              v.categories.map(
                 (c) => `  - ${c.name}: ${c.childValues.join(", ")}`
               )
-              .join("\n")}
+              .join("\n"): ""}
 `
         )
         .join("\n")}

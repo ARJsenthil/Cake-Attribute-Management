@@ -1,16 +1,19 @@
-import { useBasicInfo, type ChildType } from "../context/BasicInfo"
+import { useBasicInfo } from "../context/BasicInfo"
 
 export const BasicInfo = () => {
   const { basicInfo, setBasicInfo } = useBasicInfo();
 
+const onChange = (name: string, value: string | number | boolean) => {
+  if (name === "sort") {
+    const num = Number(value);
 
-  const onChange = (
-    name: string,
-    value: string | number | boolean
-  ) => {
-    console.log(basicInfo);
-    setBasicInfo({ ...basicInfo, [name]: value });
-  };
+    if (!Number.isInteger(num) || num < 0) {
+      return;
+    }
+  }
+  setBasicInfo((prev) => ({ ...prev, [name]: value }));
+};
+
   return (
     <div className="px-5 py-5 shadow-sm border-1 border-gray-200 rounded-xl">
       <h1 className="text-gray-700 text-left font-medium border-b-2 border-gray-200">Basic Information</h1>
@@ -70,6 +73,7 @@ export const BasicInfo = () => {
           <input
             type="number"
             name="sort"
+            min={0}
             value={basicInfo.sort}
             onChange={(e) => onChange(e.target.name, e.target.value)}
             placeholder="Enter attribute name"
@@ -80,10 +84,12 @@ export const BasicInfo = () => {
           <label className="flex items-center space-x-3">
             <input
               type="checkbox"
-              value={basicInfo.requiredStatus}
+              name="requiredStatus"
+              checked={basicInfo.requiredStatus}
               onChange={(e) => onChange(e.target.name, e.target.checked)}
               className="text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
+
             <span className="text-gray-700">Required Status</span>
           </label>
         </div>

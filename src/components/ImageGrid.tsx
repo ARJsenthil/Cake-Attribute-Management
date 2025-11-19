@@ -1,5 +1,5 @@
-import { CloudUpload, CloudUploadIcon, Image, ImageOff, Images, LucideUpload, LucideUploadCloud, Upload, UploadCloud, UploadCloudIcon } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import { Image, Upload } from "lucide-react";
+import React, { useMemo} from "react";
 
 interface ImageGridProps {
     selectedShapes: string[];

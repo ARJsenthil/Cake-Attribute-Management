@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { BasicInfo } from "../components/BasicInfo";
 
 interface AppProvidersProps {
   children: ReactNode;
