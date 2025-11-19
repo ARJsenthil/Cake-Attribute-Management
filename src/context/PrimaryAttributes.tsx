@@ -55,26 +55,9 @@ const PrimaryAttributeProvider = ({ children }: AppProvidersProps) => {
     },
   });
 
-  const handleInputChange = (
-    attributeName: keyof ChildType,
-    name: string,
-    value: string | number | boolean
-  ) => {
-    console.log(primaryAttribute);
-    setPrimaryAttribute({ ...primaryAttribute, [attributeName]: { ...primaryAttribute[attributeName], [name]: value } });
-    // setPrimaryAttribute((prev) => ({
-    //   ...prev,
-    //   [attributeName]: {
-    //     ...prev[attributeName],
-    //     [name]: value,
-    //   },
-    // }));
-
-  };
-
   return (
     <PrimaryAttributeContext.Provider
-      value={{ primaryAttribute, handleInputChange, setPrimaryAttribute }}
+      value={{ primaryAttribute, setPrimaryAttribute }}
     >
       {children}
     </PrimaryAttributeContext.Provider>

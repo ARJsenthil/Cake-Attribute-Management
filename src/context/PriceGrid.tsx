@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, type ReactNode } from "react";
 
+interface AppProvidersProps {
+  children: ReactNode;
+}
 // Price section data types
 interface PriceContextType {
   shape: string;
@@ -17,27 +20,14 @@ interface PriceContextType {
 const PriceContext = createContext<PriceContextType | undefined>(undefined);
 
 // Provider
-export const PriceProvider = ({ children }: { children: ReactNode }) => {
-  const [shape, setShape] = useState("");
-  const [kg, setKg] = useState(0);
+export const PriceProvider = ({ children }: AppProvidersProps) => {
   const [prices, setPrices] = useState(0);
-console.log(prices)
-  const resetPriceData = () => {
-    setShape("");
-    setKg(0);
-    setPrices(0);
-  };
 
   return (
     <PriceContext.Provider
       value={{
-        shape,
-        kg,
         prices,
-        setShape,
-        setKg,
         setPrices,
-        resetPriceData,
       }}
     >
       {children}

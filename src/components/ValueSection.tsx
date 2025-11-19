@@ -38,13 +38,14 @@ const ValuesSection = () => {
   const { primaryAttribute } = usePrimaryAttribute();
   const { prices, setPrices } = usePrice();
   const [images, setImages] = useState<Record<string, string>>({});
-  const onChange = (val_id: string | number, value: string) => {
-    let data = values.map(v => ({ ...v, categories: [] }));
+  const onChangeValueType = (val_id: string | number, value: string) => {
+    let data = values.map(val => ({ ...val, categories: [] }));
+    console.log(data);
     setValues(
-      data.map((v) =>
-        v.id === val_id
-          ? { ...v, type: value as ValueType }
-          : v
+      data.map((val) =>
+        val.id === val_id
+          ? { ...val, type: value as ValueType }
+          : val
       )
     )
 
@@ -123,7 +124,7 @@ const ValuesSection = () => {
 
               <select
                 value={val.type}
-                onChange={(e) => onChange(val.id, e.target.value)}
+                onChange={(e) => onChangeValueType(val.id, e.target.value)}
                 className="border border-gray-300 rounded-lg px-3 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 py-2 w-full outline-none"
               >
                 <option>Selection Input</option>

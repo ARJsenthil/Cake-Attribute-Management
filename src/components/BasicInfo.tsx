@@ -80,7 +80,7 @@ export const BasicInfo = () => {
           <label className="flex items-center space-x-3">
             <input
               type="checkbox"
-              checked={basicInfo.requiredStatus}
+              value={basicInfo.requiredStatus}
               onChange={(e) => onChange(e.target.name, e.target.checked)}
               className="text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
