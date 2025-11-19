@@ -103,7 +103,6 @@ const ImageGrid: React.FC<ImageGridProps> = ({
                                         <span className="text-gray-400 text-sm"> Click to upload</span>
                                     </div>
                                 )}
-
                                 <input
                                     type="file"
                                     accept="image/*"
